@@ -1,0 +1,16 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Namecard List</title>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Namecard List</h1>
+            <ul>
+                {% for namecard_tbl in namecard_tbls %}
+                    <li> <a href = "{%url 'namecard:detail' namecard_tbl.id %}">{{namecard_tbl}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
