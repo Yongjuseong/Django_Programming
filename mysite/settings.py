@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # shkim
     'bookmark.apps.BookmarkConfig',
     'blog.apps.BlogConfig',
+    'namecard.apps.NamecardConfig', # 추가 Namecard 앱 등록
 ]
 
 MIDDLEWARE = [

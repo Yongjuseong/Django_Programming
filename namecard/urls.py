@@ -15,16 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from bookmark.views import BookmarkLV, BookmarkDV
-#추가부분
 from django.views.generic import ListView, DetailView
 from namecard.models import Namecard_TBL
 from namecard.views import NamecardLV,NamecardDV
 app_name = 'namecard'
-
 urlpatterns = [
     #Exmple:/namecard/
     path('',NamecardLV.as_view(model=Namecard_TBL),name='index'),
+
     #Example:/namecard/index/
     path('<int:pk>/',NamecardDV.as_view(model=Namecard_TBL),name='detail')
 ]

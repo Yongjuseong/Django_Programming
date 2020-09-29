@@ -15,9 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 from mysite.views import HomeView
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +23,6 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('bookmark/', include('bookmark.urls')),
     path('blog/', include('blog.urls')),
+    path('namecard/',include('namecard.urls')), #namecard url 추가
 ]
 
