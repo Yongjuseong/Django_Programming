@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}student_tbl_detail.html{% endblock %}
+
+{% block content %}
+        <div id = "content">
+            <h1>{{object.name}}</h1>
+            <table border="1">
+                <th></th>
+                <tr> <!-- 첫번째 줄-->
+                    <td>이름</td>
+                    <td>{{object.name}}</td>
+                    <td>학번</td>
+                    <td>{{object.number}}</td>
+                </tr>
+                <tr> <!--두번째 줄-->
+                    <td>이메일</td>
+                    <td>{{object.email}}</td>
+                    <td>상태</td>
+                    <td>{{object.status}}</td>
+                </tr>
+                <tr> <!--세번째 줄-->
+                    <td>전공</td>
+                    <td colspan="3">{{object.major}}</td>
+                </tr>
+                <tr> <!-- 네번째 줄-->
+                    <td>주소</td>
+                    <td colspan="3">{{object.address}}</td>
+                </tr>
+            </table>
+ {% endblock %}

@@ -1,7 +1,7 @@
 """mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.2/topics/http/urls/
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,15 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from mysite.views import HomeView
-
+from django.views.generic import ListView, DetailView
+from student.models import Student_TBL
+from student.views import StudentLV,StudentDV
+app_name = 'student'
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # shkim
-    path('', HomeView.as_view(), name='home'),
-    path('bookmark/', include('bookmark.urls')),
-    path('blog/', include('blog.urls')),
-    path('namecard/',include('namecard.urls')), #namecard url 추가
-    path('student/',include('student.urls')), #student url 추가
-]
+    #Exmple:/student/
+    path('',StudentLV.as_view(model=Student_TBL),name='index'),
 
+    #Example:/student/index/
+    path('<int:pk>/',StudentDV.as_view(model=Student_TBL),name='detail')
+]

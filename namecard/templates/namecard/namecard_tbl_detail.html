@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{object.name}}</title>
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block title %}namecard_tbl_detail.html{% endblock %}
+
+{% block content %}
         <div id = "content">
             <h1>{{object.name}}</h1>
             <ul>
@@ -11,6 +10,4 @@
             이메일 : {{object.email}} ,   회사 :   {{object.company}}<br>
             그룹 : {{object.group}}
             </ul>
-        </div>
-    </body>
-</html>
+ {% endblock %}
