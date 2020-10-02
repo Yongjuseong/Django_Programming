@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.views.generic import ListView, DetailView
 from student.models import Student_TBL
 from student.views import StudentLV,StudentDV
+
 app_name = 'student'
 urlpatterns = [
     #Exmple:/student/
