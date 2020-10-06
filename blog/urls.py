@@ -29,5 +29,9 @@ urlpatterns = [
     # Example: /blog/archive/today/
     path('archive/today/', views.PostTAV.as_view(), name='post_today_archive'),
 
+    #상단 내용 동일
+    # Example: /blog/search/
+    path('search/',views.SearchFormView.as_view(),name='search'),
+
 ]
 
