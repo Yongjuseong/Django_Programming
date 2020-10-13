@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from mysite.views import HomeView
+from mysite.views import HomeView,UserCreateView,UserCreateDoneTV #user 뷰 for auth 추가
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')), #auth 위해  추가
+    path('accounts/register/', UserCreateView.as_view(), name='register'), #auth register위해  추가
+    path('accounts/register/done/', UserCreateDoneTV.as_view(), name='register_done'), #auth register->done  추가
     # shkim
     path('', HomeView.as_view(), name='home'),
     path('bookmark/', include('bookmark.urls')),

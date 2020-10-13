@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # shkim
+    'widget_tweaks',
     'bookmark.apps.BookmarkConfig',
     'blog.apps.BlogConfig',
     'namecard.apps.NamecardConfig', # 추가 Namecard 앱 등록
@@ -131,3 +132,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+LOGIN_REDIRECT_URL='/' #추가 auth 기능 위해서
