@@ -4,6 +4,7 @@ This is about the Django, web programming.
 Version info.
   python 3.8
   Django
+  Sqllite3
   Anaconda
  
 Reference book: "Python web programming using Django" 
