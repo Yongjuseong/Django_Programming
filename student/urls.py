@@ -28,7 +28,7 @@ urlpatterns = [
     #Example:/student/index/
     path('<int:pk>/',StudentDV.as_view(model=Student_TBL),name='detail'),
 
-    # Example: /blog/search/
+    # Example: /studnet/search/
     path('search/', views.SearchFormView.as_view(), name='search'),
 
 ]

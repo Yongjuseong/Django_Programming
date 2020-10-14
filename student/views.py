@@ -24,7 +24,7 @@ class SearchFormView(FormView):
     def form_valid(self, form):
         searchWord = form.cleaned_data['search_word']
         #filter -> icontrains => 대소문자 구분 X
-        post_list = Student_TBL.objects.filter(Q(name__icontains=searchWord)|  Q(number__icontains=searchWord) | Q(email__icontains=searchWord)|  Q(status__icontains=searchWord) | Q(major__icontains=searchWord)| Q(address__icontains=searchWord)).distinct()
+        post_list = Student_TBL.objects.filter(Q(name__icontains=searchWord)| Q(number__icontains=searchWord) | Q(email__icontains=searchWord)|  Q(status__icontains=searchWord) | Q(major__icontains=searchWord)| Q(address__icontains=searchWord)).distinct()
 
         context = {}
         context['form'] = form

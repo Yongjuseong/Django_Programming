@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Namecard Search{% endblock %}
+
+{% block content %}
+
+    <h1>Namecard Search</h1>
+    <br>
+
+    <form action="." method="post"> {% csrf_token %}
+        {{ form.as_table }}
+        <input type="submit" value="Submit" class="btn btn-primary btn-sm">
+    </form>
+
+    <br/><br/>
+
+    {% if object_list %}
+        {% for post in object_list %}
+        <h2><a href = "{%url 'namecard:detail' post.id %}">{{post.name}}</a></h2>
+        {{ post.modify_dt|date:"N d, Y" }}
+        <p>{{ post.tel }}</p>
+        <p>{{ post.company }}</p>
+        <p>{{ post.email }}</p>
+        <p>{{ post.group }}</p>
+        {% endfor %}
+
+    {% elif search_term %}
+    <b><i>Search Word({{ search_term }}) Not Found !</i></b>
+    {% endif %}
+
+{% endblock %}
+
