@@ -3,10 +3,12 @@ from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy #타이밍 로드 문제로 generic view에서 reverse X , 그래서 reverse_lazy 이용
 
+from django.contrib.auth.mixins import AccessMixin
 
 #--- TemplateView
 class HomeView(TemplateView):
     template_name = 'home.html'
+
 
 #--- User Creation
 class UserCreateView(CreateView):
@@ -17,3 +19,14 @@ class UserCreateView(CreateView):
 
 class UserCreateDoneTV(TemplateView):
     template_name = 'registration/register_done.html'
+
+
+class OwnerOnlyMixin(AccessMixin):
+    raise_exception = True
+    permission_denied_message = "Owner only can update/delete the object"
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.request.user != self.object.owner:
+            self.handle_no_permission()
+        return super().get(request, *args, **kwargs)

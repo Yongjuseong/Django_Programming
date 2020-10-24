@@ -7,6 +7,12 @@ from django.views.generic import FormView #추가 Search Form
 from blog.forms import PostSearchForm #Search를 위해 추가
 from django.db.models import Q #Search를 위해 추가
 from django.shortcuts import render #Search를 위해 추가
+from django.conf import settings
+
+from django.views.generic import CreateView, UpdateView, DeleteView #콘텐츠 편집기능 위해 추가
+from django.contrib.auth.mixins import LoginRequiredMixin #콘텐츠 편집기능 위해 추가
+from django.urls import reverse_lazy #콘텐츠 편집기능 위해 추가
+from mysite.views import OwnerOnlyMixin #콘텐츠 편집기능 위해 추가
 
 #--- ListView
 class PostLV(ListView):
@@ -19,6 +25,7 @@ class PostLV(ListView):
 #--- DetailView
 class PostDV(DetailView):
     model = Post
+
 
 
 #--- ArchiveView
@@ -64,3 +71,33 @@ class SearchFormView(FormView):
         context['object_list'] = post_list
 
         return render(self.request, self.template_name, context)   # No Redirection
+
+
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title', 'slug', 'description', 'content',]
+    initial = {'slug': 'auto-filling-do-not-input'}
+    #fields = ['title', 'description', 'content', 'tags'] # we don't have tags
+    success_url = reverse_lazy('blog:index')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
+
+class PostChangeLV(LoginRequiredMixin, ListView):
+    template_name = 'blog/post_change_list.html'
+
+    def get_queryset(self):
+        return Post.objects.filter(owner=self.request.user)
+
+
+class PostUpdateView(OwnerOnlyMixin, UpdateView):
+    model = Post
+    fields = ['title', 'slug', 'description', 'content',]
+    success_url = reverse_lazy('blog:index')
+
+
+class PostDeleteView(OwnerOnlyMixin, DeleteView) :
+    model = Post
+    success_url = reverse_lazy('blog:index')
