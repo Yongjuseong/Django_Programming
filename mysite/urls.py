@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from mysite.views import HomeView,UserCreateView,UserCreateDoneTV #user 뷰 for auth 추가
-
+from django.conf import settings # photo app 위한 추가
+from django.conf.urls.static import static #photo app 위한 추가
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')), #auth 위해  추가
@@ -28,5 +29,6 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('namecard/',include('namecard.urls')), #namecard url 추가
     path('student/',include('student.urls')), #student url 추가
-]
+    path('photo/',include('photo.urls')), # photo url 추가
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) ##
 
