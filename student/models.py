@@ -1,5 +1,5 @@
 from django.db import models
-
+from sugang.models import Subject
 # Create your models here.
 class Student_TBL(models.Model):
     name=models.CharField('NAME',max_length=100,blank=False) #이름

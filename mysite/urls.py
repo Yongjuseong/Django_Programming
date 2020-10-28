@@ -30,5 +30,6 @@ urlpatterns = [
     path('namecard/',include('namecard.urls')), #namecard url 추가
     path('student/',include('student.urls')), #student url 추가
     path('photo/',include('photo.urls')), # photo url 추가
+    path('sugang/',include('sugang.urls')), # sugang url 추가
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) ##
 
