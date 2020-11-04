@@ -2,9 +2,8 @@ import os
 from PIL import Image
 from django.db.models import ImageField
 from django.db.models.fields.files import ImageFieldFile
+class ThumbnailImageFieldFile(ImageFieldFile): #커스텀 필드 정의
 
-
-class ThumbnailImageFieldFile(ImageFieldFile):
     def _add_thumb(self, s):
         parts = s.split('.')
         parts.insert(-1, 'thumb')

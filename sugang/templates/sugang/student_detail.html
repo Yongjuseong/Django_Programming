@@ -13,6 +13,8 @@
                 <p class="font-italic">{{ object.major }}</p>
             <li class="h5">학번 </li>
                 <p class="font-italic">{{ object.number }}</p>
+            <li class="h5">학년 </li>
+                <p class="font-italic">{{ object.grade }}</p>
             <li class="h5">수강 과목 </li>
                 <p class="font-italic">
                     <a href=" {% url 'sugang:index'%}"> {{ object.subject.name }}</a>
