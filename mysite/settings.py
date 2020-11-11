@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'student.apps.StudentConfig', #추가 Student 앱 등록
     'photo.apps.PhotoConfig', #추가 Photo 앱 등록
     'sugang.apps.SugangConfig', # 추가 Sugang 앱 등록
+    'music.apps.MusicConfig', # 추가 Music 앱 등록
 ]
 
 MIDDLEWARE = [
